@@ -1,14 +1,15 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import CardBody from "react-bootstrap/esm/CardBody";
+import CardBody from "react-bootstrap/CardBody";
+import Button from "react-bootstrap/Button";
+// import SButton from "../../components/Button";
 
 function PageSignIn() {
   return (
-    <Container>
-      <Card>
+    <Container md={12} style={{marginTop: '50px'}}>
+      <Card style={{ width: '50%' }} className='m-auto nt-5'>
         <CardBody>
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">

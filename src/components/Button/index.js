@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from "react-bootstrap/Button";
 
 function SButton({
   children, 
@@ -17,7 +18,8 @@ function SButton({
         variant={variant}
         disabled={disabled}
         size={size}
-      >Primary
+      >
+        {loading ? 'Loading...' : children}
       </Button>{" "}
     </>
   );
