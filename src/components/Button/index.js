@@ -1,5 +1,26 @@
 import React from 'react'
 
-export default function Button({onClick, children}) {
-  return <button onClick={onClick}>{ children}</button>
+function SButton({
+  children, 
+  action,
+  variant,
+  size,
+  loading,
+  disabled,
+  className
+}) {
+  return (
+    <>
+      <Button
+        className={className}
+        onClick={action}
+        variant={variant}
+        disabled={disabled}
+        size={size}
+      >Primary
+      </Button>{" "}
+    </>
+  );
 }
+
+export default SButton;
