@@ -1,67 +1,28 @@
 import { useState } from "react";
-import Button from "./components/Button";
-import Input from "./components/Input";
 import "./App.css";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
 
 function App() {
-  const [form, setForm] = useState({
-    name: "",
-    usia: "",
-    tahunLahir: "",
-  });
-
-  const handleChange = (e) => {
-    setError('')
-    if (e.target.name === "name") {
-      if (e.target.value.length < 3) {
-        setError("Minimal 3 karakter");
-      }
-    }
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-  const [error, setError] = useState("");
-
-  const handleSubmit = () => {
-    if (form.name === '') {
-      setError('Field nama tidak boleh kosong')
-    }
-    else if (form.tahunLahir === "") {
-      setError("Field tahun lahir boleh kosong");
-    } else {
-      setForm({ ...form, usia: 2024 - form.tahunLahir });
-    }
-  };
+  // Example components
+  const Home = () => { return <h2>Home Page</h2>};
+  const About = () => {return <h2>About Page</h2>};
+  const Contact = () => {return <h2>Contact Page</h2>};
 
   return (
     <>
-      <h1>Aplikasi Input Data Diri</h1>
-      name:
-      <Input
-        type="text"
-        value={form.name}
-        name="name"
-        onChange={handleChange}
-      />{" "}
-      <br />
-      <br />
-      tahun lahir:
-      <Input
-        type="number"
-        value={form.tahunLahir}
-        name="tahunLahir"
-        onChange={handleChange}
-      />{" "}
-      <br />
-      <br />
-      <Input
-        type="number"
-        value={form.tahunLahir}
-        onChange={handleChange}
-      />{" "}
-      <Button onClick={handleSubmit}>Click</Button> <br />
-      <p style={{ color: "red" }}>{error}</p>
-      <br />
-      Usia saya adalah: {form.usia}
+      <Router>
+        <nav>
+          <Link to="/">Home</Link> |<Link to="/about">About</Link> |
+          <Link to="/contact">Contact</Link>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Router>
     </>
   );
 }
